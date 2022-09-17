@@ -1,17 +1,15 @@
 const express = require('express');
 const { PORT } = require('./config/index');
 const {databaseConnection} = require('./database');
+const expressApp = require('./express-app');
+
 
 const startServer = async() => {
     const app = express();
 
     await databaseConnection();
 
-    app.use(express.json());
-
-    app.use('/', (req, res, next) => {
-        return res.status(200).json({"msg":"Hello from customer"})
-    })
+    await expressApp(app)
 
     app.listen(PORT, () => {
         console.log(`customer is listening on port = ${PORT}`)
@@ -20,4 +18,4 @@ const startServer = async() => {
         process.exit();
     })
 }
-startServer()
+startServer();
