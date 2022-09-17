@@ -5,9 +5,9 @@ const app = express();
 app.use(express.json());
 
 app.use('/', (req, res, next) => {
-    return res.status(200).json({"msg":"Hello from costumer"})
+    return res.status(200).json({"msg":"Hello from shopping"})
 })
 
-app.listen(8081, () => {
-    console.log("costumer is listening")
+app.listen(8003, () => {
+    console.log("shopping is listening")
 });
